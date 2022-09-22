@@ -27,6 +27,9 @@ abstract class AbstractFixer extends PhpCsFixerAbstractFixer
     }
 
     /**
+     * @throws RuntimeException
+     * @throws LogicException
+     *
      * @return mixed
      */
     protected function getConfiguration(string $config)
