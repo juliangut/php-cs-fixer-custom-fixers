@@ -20,6 +20,11 @@
     <rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
     <rule ref="Generic.VersionControl.GitMergeConflict" />
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer" />
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="absoluteLineLimit" value="120" />
+        </properties>
+    </rule>
     <rule ref="Squiz.Scope.MemberVarScope" />
     <rule ref="Generic.Metrics.NestingLevel" >
         <properties>
