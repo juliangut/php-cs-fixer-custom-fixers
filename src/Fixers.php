@@ -23,17 +23,17 @@ class Fixers implements IteratorAggregate
     public function getIterator(): Traversable
     {
         $finder = Finder::create()
-            ->in(__DIR__)
+            ->ignoreDotFiles(true)
+            ->notName('Abstract*.php')
+            ->in(__DIR__ . '/Fixer')
             ->name('*.php');
 
-        $files = array_map(
-            fn ($file) => $file->getPathname(),
-            iterator_to_array($finder)
-        );
-        sort($files);
-
-        foreach ($files as $file) {
-            $fixerClass = str_replace('/', '\\', mb_substr($file, mb_strlen(__DIR__) - 21, -4));
+        foreach ($finder as $file) {
+            $fixerClass = sprintf(
+                '%s%s',
+                __NAMESPACE__,
+                str_replace('/', '\\', mb_substr($file->getPathname(), mb_strlen(__DIR__), -4))
+            );
 
             if (!class_exists($fixerClass)) {
                 continue;

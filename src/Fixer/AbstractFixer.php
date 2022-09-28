@@ -15,15 +15,24 @@ use LogicException;
 use PhpCsFixer\AbstractFixer as PhpCsFixerAbstractFixer;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\FixerConfiguration\FixerOptionInterface;
+use PhpCsFixer\Utils;
 use RuntimeException;
 
 abstract class AbstractFixer extends PhpCsFixerAbstractFixer
 {
     protected $configuration = [];
 
+    final public static function name(): string
+    {
+        $nameParts = explode('\\', static::class);
+        $name = substr(end($nameParts), 0, -\strlen('Fixer'));
+
+        return sprintf('JgutCustomFixers/%s', Utils::camelCaseToUnderscore($name));
+    }
+
     public function getName(): string
     {
-        return sprintf('JgutCustomFixers\\%s', parent::getName());
+        return static::name();
     }
 
     /**

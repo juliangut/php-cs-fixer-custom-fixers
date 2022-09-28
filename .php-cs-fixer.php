@@ -9,6 +9,9 @@
 
 declare(strict_types=1);
 
+use Jgut\PhpCsFixerCustomFixers\Fixer\Comment\LeadingUppercaseCommentFixer;
+use Jgut\PhpCsFixerCustomFixers\Fixer\Comment\PhpdocLeadingUppercaseSummaryFixer;
+use Jgut\PhpCsFixerCustomFixers\Fixer\LanguageConstruct\FloatLeadingZeroFixer;
 use Jgut\PhpCsFixerCustomFixers\Fixers;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
@@ -41,4 +44,7 @@ return (new Config())
             'location' => 'after_open',
             'separate' => 'both',
         ],
+        FloatLeadingZeroFixer::name() => true,
+        LeadingUppercaseCommentFixer::name() => true,
+        PhpdocLeadingUppercaseSummaryFixer::name() => true,
     ]);
