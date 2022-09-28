@@ -7,7 +7,7 @@ lint-php:
 
 .PHONY: lint-phpcs
 lint-phpcs:
-	vendor/bin/phpcs --standard=phpcs.xml.dist src
+	vendor/bin/phpcs --standard=phpcs.xml.dist src tests
 
 .PHONY: lint-phpcs-fixer
 lint-phpcs-fixer:
