@@ -1,7 +1,7 @@
 <?php
 
 /*
- * (c) 2021-2022 Julián Gutiérrez <juliangut@gmail.com>
+ * (c) 2021-2023 Julián Gutiérrez <juliangut@gmail.com>
  *
  * @license BSD-3-Clause
  * @link https://github.com/juliangut/php-cs-fixer-custom-fixers
