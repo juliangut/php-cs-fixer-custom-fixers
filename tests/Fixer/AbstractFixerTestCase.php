@@ -135,9 +135,9 @@ abstract class AbstractFixerTestCase extends TestCase
             );
         }
 
-        static::assertSame(
+        static::assertCount(
             $expectedTokens->count(),
-            $inputTokens->count(),
+            $inputTokens,
             'Both collections must have the same length.',
         );
     }

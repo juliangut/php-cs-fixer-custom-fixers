@@ -10,3 +10,4 @@ parameters:
     maximumNumberOfProcesses: 7
   paths:
     - src
+    - tests
