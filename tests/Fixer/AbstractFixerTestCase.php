@@ -32,6 +32,7 @@ abstract class AbstractFixerTestCase extends TestCase
 
     protected function getTestFixer(): AbstractFixer
     {
+        /** @var class-string<AbstractFixer> $fixerClassName */
         $fixerClassName = preg_replace(
             '/^(Jgut\\\\PhpCsFixerCustomFixers)\\\\Tests(\\\\.+)Test$/',
             '$1$2',
