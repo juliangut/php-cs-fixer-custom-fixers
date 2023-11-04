@@ -19,7 +19,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.4|^8.0",
-        "friendsofphp/php-cs-fixer": "^3.1"
+        "friendsofphp/php-cs-fixer": "^3.5"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
