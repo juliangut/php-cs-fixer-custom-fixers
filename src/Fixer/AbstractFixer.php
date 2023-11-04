@@ -15,7 +15,7 @@ use LogicException;
 use PhpCsFixer\AbstractFixer as PhpCsFixerAbstractFixer;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\FixerConfiguration\FixerOptionInterface;
-use PhpCsFixer\Utils;
+use PhpCsFixer\Preg;
 use RuntimeException;
 
 abstract class AbstractFixer extends PhpCsFixerAbstractFixer
@@ -27,7 +27,12 @@ abstract class AbstractFixer extends PhpCsFixerAbstractFixer
         $nameParts = explode('\\', static::class);
         $name = substr(end($nameParts), 0, -\strlen('Fixer'));
 
-        return sprintf('JgutCustomFixers/%s', Utils::camelCaseToUnderscore($name));
+        return sprintf('JgutCustomFixers/%s', self::camelCaseToUnderscore($name));
+    }
+
+    private static function camelCaseToUnderscore(string $string): string
+    {
+        return mb_strtolower(Preg::replace('/(?<!^)((?=[\p{Lu}][^\p{Lu}])|(?<![\p{Lu}])(?=[\p{Lu}]))/', '_', $string));
     }
 
     public function getName(): string
