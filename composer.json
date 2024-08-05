@@ -33,7 +33,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.3",
         "phpstan/phpstan-strict-rules": "^1.0",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^11.3",
         "povils/phpmnd": "^3.3",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "^8.0",
