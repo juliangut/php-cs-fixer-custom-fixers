@@ -26,7 +26,7 @@ class LeadingUppercaseCommentFixerTest extends AbstractFixerTestCase
     /**
      * @return array<string, array<int, mixed>>
      */
-    public function fixCasesProvider(): array
+    public static function fixCasesProvider(): array
     {
         return [
             // Line slash comments

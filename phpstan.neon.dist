@@ -1,11 +1,8 @@
 includes:
-  - %rootDir%/conf/bleedingEdge.neon
+  - %rootDir%/../../juliangut/phpstan-config/phpstan-phpunit.neon
 
 parameters:
   level: max
-  checkMissingCallableSignature: true
-  tipsOfTheDay: false
-  errorFormat: compact
   parallel:
     maximumNumberOfProcesses: 7
   paths:

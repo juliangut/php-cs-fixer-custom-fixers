@@ -7,6 +7,8 @@
  * @link https://github.com/juliangut/php-cs-fixer-custom-fixers
  */
 
+declare(strict_types=1);
+
 namespace Jgut\PhpCsFixerCustomFixers;
 
 use IteratorAggregate;

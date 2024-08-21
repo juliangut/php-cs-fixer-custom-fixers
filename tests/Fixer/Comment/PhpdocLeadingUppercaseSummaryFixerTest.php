@@ -26,7 +26,7 @@ class PhpdocLeadingUppercaseSummaryFixerTest extends AbstractFixerTestCase
     /**
      * @return array<string, array<int, mixed>>
      */
-    public function fixCasesProvider(): array
+    public static function fixCasesProvider(): array
     {
         return [
             'uppercase line docblock' => [

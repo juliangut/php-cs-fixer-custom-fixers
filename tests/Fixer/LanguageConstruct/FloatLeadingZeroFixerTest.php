@@ -13,6 +13,7 @@ namespace Jgut\PhpCsFixerCustomFixers\Tests\Fixer\LanguageConstruct;
 
 use Jgut\PhpCsFixerCustomFixers\Fixer\LanguageConstruct\FloatLeadingZeroFixer;
 use Jgut\PhpCsFixerCustomFixers\Tests\Fixer\AbstractFixerTestCase;
+use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 
 class FloatLeadingZeroFixerTest extends AbstractFixerTestCase
 {
@@ -23,7 +24,9 @@ class FloatLeadingZeroFixerTest extends AbstractFixerTestCase
      */
     public function testFix(string $expected, ?string $input = null, array $config = []): void
     {
-        $this->fixer->configure($config);
+        if ($this->fixer instanceof ConfigurableFixerInterface) {
+            $this->fixer->configure($config);
+        }
 
         $this->doTest($expected, $input);
     }
@@ -31,7 +34,7 @@ class FloatLeadingZeroFixerTest extends AbstractFixerTestCase
     /**
      * @return array<string, array<int, mixed>>
      */
-    public function fixCasesProvider(): array
+    public static function fixCasesProvider(): array
     {
         return [
             'leading zero' => [
@@ -40,7 +43,7 @@ class FloatLeadingZeroFixerTest extends AbstractFixerTestCase
             'leading zero with config' => [
                 '<?php $floatVariable = 0.1;',
                 null,
-                ['leading_zero' => 'add'],
+                [FloatLeadingZeroFixer::LEADING_ZERO_CONFIG => FloatLeadingZeroFixer::LEADING_ZERO_ADD],
             ],
             'add leading zero' => [
                 '<?php $floatVariable = 0.1;',
@@ -49,17 +52,17 @@ class FloatLeadingZeroFixerTest extends AbstractFixerTestCase
             'add leading zero with config' => [
                 '<?php $floatVariable = 0.1;',
                 '<?php $floatVariable = .1;',
-                ['leading_zero' => 'add'],
+                [FloatLeadingZeroFixer::LEADING_ZERO_CONFIG => FloatLeadingZeroFixer::LEADING_ZERO_ADD],
             ],
             'non leading zero with config' => [
                 '<?php $floatVariable = .1;',
                 null,
-                ['leading_zero' => 'remove'],
+                [FloatLeadingZeroFixer::LEADING_ZERO_CONFIG => FloatLeadingZeroFixer::LEADING_ZERO_REMOVE],
             ],
             'remove leading zero with config' => [
                 '<?php $floatVariable = .1;',
                 '<?php $floatVariable = 0.1;',
-                ['leading_zero' => 'remove'],
+                [FloatLeadingZeroFixer::LEADING_ZERO_CONFIG => FloatLeadingZeroFixer::LEADING_ZERO_REMOVE],
             ],
         ];
     }

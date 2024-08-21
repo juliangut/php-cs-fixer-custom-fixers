@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Jgut\PhpCsFixerCustomFixers\Tests\Fixer;
 
 use InvalidArgumentException;
-use PhpCsFixer\AbstractFixer;
+use Jgut\PhpCsFixerCustomFixers\Fixer\AbstractFixer;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 use PHPUnit\Framework\Constraint\IsIdentical;
