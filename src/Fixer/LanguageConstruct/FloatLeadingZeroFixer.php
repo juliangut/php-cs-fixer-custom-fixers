@@ -56,14 +56,13 @@ class FloatLeadingZeroFixer extends AbstractFixer implements ConfigurableFixerIn
 
     public function configure(array $configuration): void
     {
-        if (
-            in_array(
-                $configuration[self::LEADING_ZERO_CONFIG] ?? '',
-                [self::LEADING_ZERO_ADD, self::LEADING_ZERO_REMOVE],
-                true
-            )
-        ) {
-            $this->leadingZero = $configuration[self::LEADING_ZERO_CONFIG];
+        $leadingZero = strtolower(trim($configuration[self::LEADING_ZERO_CONFIG] ?? ''));
+        if (in_array($leadingZero, [self::LEADING_ZERO_ADD, self::LEADING_ZERO_REMOVE], true)) {
+            $this->leadingZero = $leadingZero;
+        }
+
+        if (property_exists($this, 'configuration') && $this->configuration === null) {
+            $this->configuration = $this->getConfigurationDefinition()->resolve($configuration);
         }
     }
 
