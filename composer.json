@@ -29,7 +29,7 @@
         "phpcompatibility/php-compatibility": "^9.3",
         "phpmd/phpmd": "^2.14",
         "phpstan/phpstan": "^1.11",
-        "phpunit/phpunit": "^9.6.13|^10.4",
+        "phpunit/phpunit": "^11.3.6",
         "povils/phpmnd": "^3.3",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "^8.0",
