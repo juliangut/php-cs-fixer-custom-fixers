@@ -82,7 +82,7 @@ CODE),
                 continue;
             }
 
-            $tokens->offsetSet($index, new Token([$token->getId(), $modifiedContent]));
+            $tokens->offsetSet($index, new Token([\T_COMMENT, $modifiedContent]));
         }
     }
 

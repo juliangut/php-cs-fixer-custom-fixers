@@ -93,9 +93,9 @@ class FloatLeadingZeroFixer extends AbstractFixer implements ConfigurableFixerIn
             $value = $token->getContent();
 
             if ($leadingZero === self::LEADING_ZERO_ADD && $value[0] === '.') {
-                $tokens->offsetSet($index, new Token([$token->getId(), '0' . $value]));
+                $tokens->offsetSet($index, new Token([\T_DNUMBER, '0' . $value]));
             } elseif ($leadingZero === self::LEADING_ZERO_REMOVE && preg_match('/^0\./', $value) === 1) {
-                $tokens->offsetSet($index, new Token([$token->getId(), mb_substr($value, 1)]));
+                $tokens->offsetSet($index, new Token([\T_DNUMBER, mb_substr($value, 1)]));
             }
         }
     }

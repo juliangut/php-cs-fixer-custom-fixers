@@ -123,9 +123,7 @@ abstract class AbstractFixerTestCase extends TestCase
                 ),
             );
 
-            $expectedTokenKind = $expectedToken->isArray()
-                ? $expectedToken->getId()
-                : $expectedToken->getContent();
+            $expectedTokenKind = $expectedToken->getId() ?? $expectedToken->getContent();
             static::assertTrue(
                 $inputTokens->isTokenKindFound($expectedTokenKind),
                 sprintf(
