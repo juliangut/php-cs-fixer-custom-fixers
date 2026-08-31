@@ -149,6 +149,26 @@ true;',
  */
  true;',
             ],
+            'lowercase block comment with empty leading star line' => [
+                '<?php /*
+ *
+ * Block comment
+ */',
+                '<?php /*
+ *
+ * block comment
+ */',
+            ],
+            'lowercase block comment with blank leading line' => [
+                '<?php /*
+
+ Block comment
+*/',
+                '<?php /*
+
+ block comment
+*/',
+            ],
             'lowercase complete block comment' => [
                 '<?php /*
  * Block comment
