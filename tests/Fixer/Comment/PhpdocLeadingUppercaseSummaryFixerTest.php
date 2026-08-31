@@ -58,6 +58,43 @@ class PhpdocLeadingUppercaseSummaryFixerTest extends AbstractFixerTestCase
  * @param string $variable
  */',
             ],
+            'uppercase multiline summary' => [
+                '<?php
+/**
+ * Docblock summary that spans
+ * over multiple lines
+ *
+ * @param string $variable
+ */',
+            ],
+            'lowercase multiline summary' => [
+                '<?php
+/**
+ * Docblock summary that spans
+ * over multiple lines
+ *
+ * @param string $variable
+ */',
+                '<?php
+/**
+ * docblock summary that spans
+ * over multiple lines
+ *
+ * @param string $variable
+ */',
+            ],
+            'lowercase multiline summary without tags' => [
+                '<?php
+/**
+ * Docblock summary that spans
+ * over multiple lines
+ */',
+                '<?php
+/**
+ * docblock summary that spans
+ * over multiple lines
+ */',
+            ],
         ];
     }
 }

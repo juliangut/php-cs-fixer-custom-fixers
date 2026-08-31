@@ -97,7 +97,15 @@ CODE),
             return $matches['lead'] . ucfirst($matches['comment']) . $matches['tail'];
         }
 
-        $line = $docBlock->getLine($end);
+        $line = null;
+        for ($index = 0; $index <= $end; ++$index) {
+            $docBlockLine = $docBlock->getLine($index);
+            if ($docBlockLine !== null && $docBlockLine->containsUsefulContent()) {
+                $line = $docBlockLine;
+
+                break;
+            }
+        }
         if ($line === null) {
             return $originalContent;
         }
