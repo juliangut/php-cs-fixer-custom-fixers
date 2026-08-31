@@ -79,7 +79,7 @@ CODE),
                 continue;
             }
 
-            $tokens->offsetSet($index, new Token([(int) $token->getId(), $modifiedContent]));
+            $tokens->offsetSet($index, new Token([$token->getId(), $modifiedContent]));
         }
     }
 

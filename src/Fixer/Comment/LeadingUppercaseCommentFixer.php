@@ -26,7 +26,8 @@ class LeadingUppercaseCommentFixer extends AbstractFixer
     /** @see https://regex101.com/r/U0wFG2/1 */
     private const LINE_COMMENT_REGEX = '#^(?<lead>(?:\/\/|\#(?!\[)) *)(?<comment>.+)#u';
 
-    private const BLOCK_COMMENT_REGEX = '#^(?<lead>\/\*(?:\s*\*(?!\/))*\s*)(?<comment>.+(?!\*\/))(?<tail>\n? *\*\/)$#us';
+    private const BLOCK_COMMENT_REGEX =
+        '#^(?<lead>\/\*(?:\s*\*(?!\/))*\s*)(?<comment>.+(?!\*\/))(?<tail>\n? *\*\/)$#us';
 
     public function getDefinition(): FixerDefinitionInterface
     {
@@ -81,7 +82,7 @@ CODE),
                 continue;
             }
 
-            $tokens->offsetSet($index, new Token([(int) $token->getId(), $modifiedContent]));
+            $tokens->offsetSet($index, new Token([$token->getId(), $modifiedContent]));
         }
     }
 
