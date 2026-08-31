@@ -94,7 +94,7 @@ CODE),
                 return $originalContent;
             }
 
-            return $matches['lead'] . ucfirst($matches['comment']) . $matches['tail'];
+            return $matches['lead'] . $this->uppercaseFirst($matches['comment']) . $matches['tail'];
         }
 
         $line = null;
@@ -115,7 +115,7 @@ CODE),
             return $originalContent;
         }
 
-        $line->setContent($matches['lead'] . ucfirst($matches['comment']));
+        $line->setContent($matches['lead'] . $this->uppercaseFirst($matches['comment']));
 
         return $docBlock->getContent();
     }

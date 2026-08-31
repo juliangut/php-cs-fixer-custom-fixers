@@ -90,11 +90,11 @@ CODE),
         $originalContent = $commentToken->getContent();
 
         if (preg_match(self::BLOCK_COMMENT_REGEX, $originalContent, $matches) === 1) {
-            return $matches['lead'] . ucfirst($matches['comment']) . $matches['tail'];
+            return $matches['lead'] . $this->uppercaseFirst($matches['comment']) . $matches['tail'];
         }
 
         if (preg_match(self::LINE_COMMENT_REGEX, $originalContent, $matches) === 1) {
-            return $matches['lead'] . ucfirst($matches['comment']);
+            return $matches['lead'] . $this->uppercaseFirst($matches['comment']);
         }
 
         return $originalContent;

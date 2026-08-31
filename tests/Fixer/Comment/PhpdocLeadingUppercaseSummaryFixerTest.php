@@ -58,6 +58,20 @@ class PhpdocLeadingUppercaseSummaryFixerTest extends AbstractFixerTestCase
  * @param string $variable
  */',
             ],
+            'accented lowercase docblock' => [
+                '<?php
+/**
+ * Ánimo summary
+ *
+ * @param string $variable
+ */',
+                '<?php
+/**
+ * ánimo summary
+ *
+ * @param string $variable
+ */',
+            ],
             'uppercase multiline summary' => [
                 '<?php
 /**

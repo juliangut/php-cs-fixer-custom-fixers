@@ -45,6 +45,11 @@ class LeadingUppercaseCommentFixerTest extends AbstractFixerTestCase
                 '<?php $valid = true; // line comment',
             ],
 
+            'accented lowercase line block comment' => [
+                '<?php /* Ánimo comment */',
+                '<?php /* ánimo comment */',
+            ],
+
             // Line hash comment
             'uppercase line hash comment' => [
                 '<?php # Line comment',

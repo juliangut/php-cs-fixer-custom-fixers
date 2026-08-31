@@ -33,4 +33,9 @@ abstract class AbstractFixer extends PhpCsFixerAbstractFixer
     {
         return static::name();
     }
+
+    protected function uppercaseFirst(string $string): string
+    {
+        return mb_strtoupper(mb_substr($string, 0, 1)) . mb_substr($string, 1);
+    }
 }
