@@ -13,10 +13,31 @@ namespace Jgut\PhpCsFixerCustomFixers\Tests\Fixer\LanguageConstruct;
 
 use Jgut\PhpCsFixerCustomFixers\Fixer\LanguageConstruct\FloatLeadingZeroFixer;
 use Jgut\PhpCsFixerCustomFixers\Tests\Fixer\AbstractFixerTestCase;
+use PhpCsFixer\ConfigurationException\InvalidFixerConfigurationException;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 
 class FloatLeadingZeroFixerTest extends AbstractFixerTestCase
 {
+    public function testInvalidConfigurationValue(): void
+    {
+        $fixer = $this->fixer;
+        \assert($fixer instanceof ConfigurableFixerInterface);
+
+        $this->expectException(InvalidFixerConfigurationException::class);
+
+        $fixer->configure([FloatLeadingZeroFixer::LEADING_ZERO_CONFIG => 'invalid']);
+    }
+
+    public function testInvalidConfigurationOption(): void
+    {
+        $fixer = $this->fixer;
+        \assert($fixer instanceof ConfigurableFixerInterface);
+
+        $this->expectException(InvalidFixerConfigurationException::class);
+
+        $fixer->configure(['unknown_option' => FloatLeadingZeroFixer::LEADING_ZERO_REMOVE]);
+    }
+
     /**
      * @dataProvider fixCasesProvider
      *
