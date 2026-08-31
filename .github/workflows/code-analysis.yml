@@ -14,26 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          coverage: none
-
-      - name: Composer install
-        uses: ramsey/composer-install@v3
-        with:
-          composer-options: "--prefer-dist"
-
-      - name: Install Symplify easy-ci
-        run: composer require --dev symplify/easy-ci:11.1.5 --no-interaction --no-progress --ansi --prefer-stable --prefer-dist
-
-      - id: output_php
-        run: echo "matrix=$(vendor/bin/easy-ci php-versions-json)" >> $GITHUB_OUTPUT
+      - id: composer-versions-matrix
+        uses: WyriHaximus/github-action-composer-php-versions-in-range@v1
 
     outputs:
-      php: ${{ steps.output_php.outputs.matrix }}
+      php: ${{ steps.composer-versions-matrix.outputs.version }}
+      extensions: ${{ steps.composer-versions-matrix.outputs.extensions }}
 
   code_analysis:
     needs: prepare_env
@@ -44,22 +32,23 @@ jobs:
         php: ${{ fromJson(needs.prepare_env.outputs.php) }}
         dependency:
           - lowest
-          - stable
+          - highest
 
     name: Analyse on PHP ${{ matrix.php }} ${{ matrix.dependency }}
 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: ${{ join(fromJson(needs.prepare_env.outputs.extensions), ', ') }}
           coverage: none
 
       - name: Composer install
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
         with:
           dependency-versions: ${{ matrix.dependency }}
           composer-options: "--prefer-dist"
